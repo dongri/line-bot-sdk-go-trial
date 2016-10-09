@@ -7,7 +7,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/dongri/line-bot-sdk-go/linebot"
+	"github.com/dongri/line-bot-sdk-go-trial/linebot"
 )
 
 var botClient *linebot.Client

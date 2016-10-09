@@ -5,13 +5,13 @@
 * Download and install it:
 
 ```go
-$ go get github.com/dongri/line-bot-sdk-go
+$ go get github.com/dongri/line-bot-sdk-go-trial
 ```
 
 * Import it in your code:
 
 ```go
-$ import "github.com/dongri/line-bot-sdk-go/linebot"
+$ import "github.com/dongri/line-bot-sdk-go-trial/linebot"
 ```
 
 ## Examples
@@ -26,7 +26,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/dongri/line-bot-sdk-go/linebot"
+	"github.com/dongri/line-bot-sdk-go-trial/linebot"
 )
 
 var botClient *linebot.Client
@@ -43,7 +43,7 @@ func main() {
 	var myEvent linebot.EventHandler = NewEventHandler()
 	botClient.SetEventHandler(myEvent)
 
-	http.HandleFunc("/callback", callbackHandler)
+	http.HandleFunc("/callback", linebot.Middleware(http.HandlerFunc(callbackHandler)))
 	port := os.Getenv("PORT")
 	addr := fmt.Sprintf(":%s", port)
 	http.ListenAndServe(addr, nil)
